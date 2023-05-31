@@ -45,7 +45,7 @@ JSON : http://localhost:8080/v3/api-docs
  UI Documentation : http://localhost:8080/swagger-ui/index.html for all APIS.
 ```
 
-## All api covered with unit testing 
+## All apis covered with unit testing 
 ## you can import me.collection to post man to test allEnpoints  
 
 ## By: Mohamed Ragab
