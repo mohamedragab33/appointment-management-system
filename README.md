@@ -1,4 +1,4 @@
-# appointment-management-system
+# Appointment Management System
 ## Spring Boot, postgresql, JPA , lombok ,springdoc , Docker ,Maven
 
 Medical clinic with one doctor needs an appointment management system, where the clinic admin can review appointments by date or patient.
