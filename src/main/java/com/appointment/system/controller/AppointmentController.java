@@ -1,5 +1,6 @@
 package com.appointment.system.controller;
 
+import com.appointment.system.models.DTO.AppointmentDto;
 import com.appointment.system.models.DTO.AppointmentResponse;
 import com.appointment.system.models.Entity.Appointment;
 import com.appointment.system.service.AppointmentService;
@@ -27,14 +28,14 @@ public class AppointmentController {
     }
 
     @PostMapping
-    public ResponseEntity<Appointment> createAppointment(@RequestBody Appointment appointment) {
+    public ResponseEntity<Appointment> createAppointment(@RequestBody AppointmentDto appointment) {
         Appointment createdAppointment = appointmentService.createAppointment(appointment);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdAppointment);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> cancelAppointment(@PathVariable("id") Long appointmentId,
-                                                  @RequestParam("reason") String cancellationReason) {
+    public ResponseEntity<Void> cancelAppointment(@PathVariable(value = "id") Long appointmentId,
+                                                  @RequestParam(value = "reason" , required = false) String cancellationReason) {
         appointmentService.cancelAppointment(appointmentId, cancellationReason);
         return ResponseEntity.noContent().build();
     }

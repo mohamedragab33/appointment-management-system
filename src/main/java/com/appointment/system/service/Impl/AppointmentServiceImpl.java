@@ -1,9 +1,12 @@
 package com.appointment.system.service.Impl;
 
 
+import com.appointment.system.models.DTO.AppointmentDto;
 import com.appointment.system.models.DTO.AppointmentResponse;
 import com.appointment.system.models.Entity.Appointment;
+import com.appointment.system.models.Entity.Patient;
 import com.appointment.system.repository.AppointmentRepository;
+import com.appointment.system.repository.PatientRepository;
 import com.appointment.system.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,8 @@ import java.util.List;
 public class AppointmentServiceImpl implements AppointmentService {
     private final AppointmentRepository appointmentRepository;
 
+    @Autowired
+    private PatientRepository patientRepository ;
     @Autowired
     public AppointmentServiceImpl(AppointmentRepository appointmentRepository) {
         this.appointmentRepository = appointmentRepository;
@@ -36,7 +41,14 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public Appointment createAppointment(Appointment appointment) {
+    public Appointment createAppointment(AppointmentDto appointmentDto) {
+        Appointment appointment = new Appointment();
+        Patient patient =patientRepository.findById(appointmentDto.getPatientId()).orElseThrow(() -> new IllegalArgumentException("Invalid Patient ID"));
+        appointment.setReason(appointmentDto.getReason());
+        appointment.setDate(appointmentDto.getDate());
+        appointment.setStatus(appointmentDto.getStatus());
+        appointment.setPatient(patient);
+
         return appointmentRepository.save(appointment);
     }
 
@@ -45,7 +57,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         Appointment appointment = appointmentRepository.findById(appointmentId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid appointment ID"));
 
-        appointment.setCancellationReason(cancellationReason);
+        appointment.setReason(cancellationReason);
         appointmentRepository.save(appointment);
     }
 

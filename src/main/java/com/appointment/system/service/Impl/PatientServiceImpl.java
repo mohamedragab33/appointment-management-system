@@ -16,7 +16,7 @@ public class PatientServiceImpl implements PatientService {
     private PatientRepository patientRepository ;
     @Override
     public Patient addPatient(PatientDto patient) {
-        Patient patient1 = new Patient(patient.getPatientName());
+        Patient patient1 = new Patient(patient.getPatientName(),patient.getEmail(),patient.getPhone());
         return patientRepository.save(patient1);
     }
 

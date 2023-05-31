@@ -1,6 +1,5 @@
-insert into patients(name) values ('mohamed');
-insert into patients(name) values ('ragab');
-insert into patients(name) values ('Ahmed');
-insert into patients(name) values ('samy');
-insert into patients(name) values ('said ahmed');
-insert into patients(name) values ('Mohamed ragab');
+insert into patients(name, email , phone) values ('mohamed','mohamed@ragab.com','0123569852');
+insert into patients(name, email , phone) values ('mohamed1','mohamed1@ragab.com','0123569852');
+insert into patients(name, email , phone) values ('mohamed2','mohamed2@ragab.com','0123569852');
+insert into patients(name, email , phone) values ('mohamed3','mohamed3@ragab.com','0123569852');
+insert into patients(name, email , phone) values ('mohamed4','mohamed4@ragab.com','0123569852');
